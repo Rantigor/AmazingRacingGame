@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: New Layer 4
+    uniqueID: 4020567475
+    locked: 0
+  - name: Backgrounds
+    uniqueID: 1024522359
+    locked: 0
+  - name: Marks
+    uniqueID: 748599855
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Partlicles
+    uniqueID: 141641789
     locked: 0
