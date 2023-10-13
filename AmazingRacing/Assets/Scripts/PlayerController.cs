@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        carRigidbody2D.centerOfMass += new Vector2(0,-1.5f);
     }
 
     private void FixedUpdate()
@@ -50,9 +52,9 @@ public class PlayerController : MonoBehaviour
 
         //Apply drag if there is no accelerationInput so the car stops when the player lets go to accelator
         if (accelerationInput == 0)
-            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 7.0f, Time.fixedDeltaTime * 3);
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 10.0f, Time.fixedDeltaTime * 1.5f);
         else
-            carRigidbody2D.drag = 2;
+            carRigidbody2D.drag = 5;
         //Create a force for the engine
         Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
 
@@ -62,7 +64,7 @@ public class PlayerController : MonoBehaviour
     void ApplySteering()
     {
         //Limit the cars ability to turn when moving slowly
-        float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 8);
+        float minSpeedBeforeAllowTurningFactor = (carRigidbody2D.velocity.magnitude / 12);
         minSpeedBeforeAllowTurningFactor = Mathf.Clamp01(minSpeedBeforeAllowTurningFactor);
 
         //Update the rotation angle based on input
