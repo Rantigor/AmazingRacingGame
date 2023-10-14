@@ -1,4 +1,8 @@
-public interface Interactable
+using UnityEngine;
+using UnityEngine.SocialPlatforms.GameCenter;
+
+public abstract class Interactable : MonoBehaviour
 {
-    void Interacted(PlayerController playerController);
+    public abstract void Interacted(GameObject target);
+    public abstract float GetInteractableTime();
 }
