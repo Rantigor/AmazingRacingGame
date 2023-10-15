@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
-        carRigidbody2D.centerOfMass += new Vector2(0,-1.5f);
+        //carRigidbody2D.centerOfMass += new Vector2(0,-1.5f);
     }
 
     private void FixedUpdate()

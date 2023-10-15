@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6829244996004665022}
   - component: {fileID: 2017139488256586819}
   m_Layer: 0
-  m_Name: InvisibleEffeckt
+  m_Name: InvisibleEffecter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
