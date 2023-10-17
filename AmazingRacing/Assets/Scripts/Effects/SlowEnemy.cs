@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudInteracted : Interactable
+public class SlowEnemy : Interactable
 {
-    public float mudEffectTime;
-    public GameObject Player1,Player2,_target,currentPlayer,_MudBall;
-    MudBall mudBallScript;
+    public float slowEffectTime;
+    public GameObject Player1, Player2, _target, currentPlayer, slowBall;
+    SlowBall _slowBall;
+
+
     private void Start()
     {
         Player1 = GameObject.Find("Player 1");
@@ -14,20 +16,22 @@ public class MudInteracted : Interactable
     }
     public override float GetInteractableTime()
     {
-        return mudEffectTime;
+        return slowEffectTime;
     }
+
     public override void Interacted(GameObject target)
     {
         currentPlayer = target;
-        if(target.name == "Player 1")
+        if (target.name == "Player 1")
         {
             _target = Player2;
-        }else
+        }
+        else
         {
             _target = Player1;
         }
-        mudBallScript =  Instantiate(_MudBall, currentPlayer.transform.position, Quaternion.identity).GetComponent<MudBall>();
-        mudBallScript.mudInteracted = this;
+        _slowBall = Instantiate(slowBall, currentPlayer.transform.position, Quaternion.identity).GetComponent<SlowBall>();
+        _slowBall.slowEnemy = this;
     }
 
 }

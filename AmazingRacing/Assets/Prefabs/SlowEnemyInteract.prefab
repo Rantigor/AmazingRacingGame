@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7725973359024118721
+--- !u!1 &5054671078054859300
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3228266361347827211}
-  - component: {fileID: 7401106101866823757}
-  - component: {fileID: 3958577310591763327}
-  - component: {fileID: 8919568502109234839}
+  - component: {fileID: 5151880973596602725}
+  - component: {fileID: 8392668134853866538}
+  - component: {fileID: 8157955302054800581}
+  - component: {fileID: 5858363834044263929}
   m_Layer: 0
-  m_Name: MudInteractable
+  m_Name: SlowEnemyInteract
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3228266361347827211
+--- !u!4 &5151880973596602725
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725973359024118721}
+  m_GameObject: {fileID: 5054671078054859300}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.6, y: 6.5, z: -0.17256965}
+  m_LocalPosition: {x: -21.6, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7401106101866823757
+--- !u!114 &8392668134853866538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054671078054859300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04154ab0f2cafc1488418e06a7bec6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowEffectTime: 2
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  _target: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  slowBall: {fileID: 6897787996273919900, guid: 2375e69801b32f544b6f593ce70a0b3d, type: 3}
+--- !u!212 &8157955302054800581
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725973359024118721}
+  m_GameObject: {fileID: 5054671078054859300}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,24 +93,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0191a8ab354e0947ad377b2426458ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9705fd10cbba0554eb94113bc7f456fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6, y: 4.88}
+  m_Size: {x: 24.800001, y: 24.800001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3958577310591763327
+--- !u!61 &5858363834044263929
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725973359024118721}
+  m_GameObject: {fileID: 5054671078054859300}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -122,30 +140,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 4.88}
-    newSize: {x: 6, y: 4.88}
+    oldSize: {x: 8.266667, y: 8.266667}
+    newSize: {x: 24.800001, y: 24.800001}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 4.88}
+  m_Size: {x: 8.266667, y: 8.266667}
   m_EdgeRadius: 0
---- !u!114 &8919568502109234839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7725973359024118721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfa591f60f577a9448fb3879b5e6cb6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mudEffectTime: 5
-  Player1: {fileID: 0}
-  Player2: {fileID: 0}
-  _target: {fileID: 0}
-  currentPlayer: {fileID: 0}
-  _MudBall: {fileID: 6667933250097710581, guid: 6f495a3044b74954cb92692e2119853b, type: 3}

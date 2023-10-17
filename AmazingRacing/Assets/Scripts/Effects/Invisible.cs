@@ -36,11 +36,14 @@ public class Invisible : Interactable
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         isInteracted=true;
+
         target.GetComponent<Animator>().SetTrigger("InvinsibleStart");
         target.GetComponent<PlayerController>().animator.SetBool("isInvinsible", true);
         target.GetComponent<Collider2D>().isTrigger = true;
+
         StartCoroutine(SetDefault());
         StartCoroutine(SetDefaultColor(target));
+
         GetObject(target);
 
     }
