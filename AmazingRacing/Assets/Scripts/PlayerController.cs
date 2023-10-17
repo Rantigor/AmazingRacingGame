@@ -20,11 +20,14 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D carRigidbody2D;
 
+    public Animator animator;
+    public bool CanInteractionEnd = true;
 
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
         //carRigidbody2D.centerOfMass += new Vector2(0,-1.5f);
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -106,6 +109,14 @@ public class PlayerController : MonoBehaviour
     {
         steeringInput = inputVector.x;
         accelerationInput = inputVector.y;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        CanInteractionEnd = false;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        CanInteractionEnd = true;
     }
 }
 
