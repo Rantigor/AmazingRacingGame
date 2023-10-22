@@ -12,13 +12,17 @@ public class MudBall : MonoBehaviour
 
     public Image player1MudUI, player2MudUI;
     bool canGo;
+
+    GameManager gameManager;
     private void Start()
     {
         player1MudUI = GameObject.Find("MudP1").GetComponent<Image>();
         player2MudUI = GameObject.Find("MudP2").GetComponent<Image>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Update()
     {
+        if (gameManager.isGameStopped) { return; }
         if(mudInteracted != null) { canGo = true; }
         if(canGo)
         {
@@ -64,7 +68,7 @@ public class MudBall : MonoBehaviour
     }
     IEnumerator CloseMudUI()
     {
-        yield return new WaitForSecondsRealtime(mudInteracted.mudEffectTime +0.1f);
+        yield return new WaitForSeconds(mudInteracted.mudEffectTime +0.1f);
         if (mudInteracted._target.name == "Player 1")
         {
             player1MudUI.enabled = false;

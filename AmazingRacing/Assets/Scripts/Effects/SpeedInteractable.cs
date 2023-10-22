@@ -7,15 +7,17 @@ public class SpeedInteractable : Interactable
     [SerializeField] float speedChange;
     [SerializeField] float interactableTime;
 
-    private float defaultSpeed;
     bool isInteracted = false;
     enum InteractableType { Up, Down }
     [SerializeField]InteractableType IType;
 
+    GameManager gameManager;
+    float timer;
     private void Start()
     {
-        defaultSpeed = FindObjectOfType<PlayerController>().accelerationFactor;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
+
 
     public override void Interacted(GameObject target)
     {
@@ -42,7 +44,7 @@ public class SpeedInteractable : Interactable
     }
     IEnumerator SetDefault(PlayerController pCont)
     {
-        yield return new WaitForSecondsRealtime(interactableTime);
+        yield return new WaitForSeconds(interactableTime);
         switch (IType)
         {
             case InteractableType.Up:

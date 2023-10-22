@@ -10,6 +10,7 @@ public class Invisible : Interactable
     bool isInteractedEnd = false;
 
     GameObject _object;
+
     public override float GetInteractableTime()
     {
         return effectTime;
@@ -53,12 +54,12 @@ public class Invisible : Interactable
     }
     IEnumerator SetDefault()
     {
-        yield return new WaitForSecondsRealtime(effectTime);
+        yield return new WaitForSeconds(effectTime);
         isInteractedEnd=true;
     }
     IEnumerator SetDefaultColor(GameObject obj)
     {
-        yield return new WaitForSecondsRealtime(effectTime - 2);
+        yield return new WaitForSeconds(effectTime - 2);
         obj.GetComponent<PlayerController>().animator.SetTrigger("InvinsibleEnd");
     }
 }

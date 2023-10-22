@@ -13,15 +13,16 @@ public class SlowBall : MonoBehaviour
 
     private float defaultSpeed;
     PlayerController playerController;
+    GameManager gameManager;
     private void Start()
     {
         player1SnowUI = GameObject.Find("SnowP1").GetComponent<Image>();
         player2SnowUI = GameObject.Find("SnowP2").GetComponent<Image>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Update()
     {
-        if (slowEnemy == null) return;
-
+        if (slowEnemy == null || gameManager.isGameStopped) return;
         transform.position = Vector3.MoveTowards(transform.position, slowEnemy._target.transform.position, moveSpeed);
         Vector3 Look = transform.InverseTransformPoint(slowEnemy._target.transform.position);
         float Angle = Mathf.Atan2(Look.y, Look.x) * Mathf.Rad2Deg + 150;
@@ -68,7 +69,7 @@ public class SlowBall : MonoBehaviour
     }
     IEnumerator CloseSnowUI()
     {
-        yield return new WaitForSecondsRealtime(slowEnemy.slowEffectTime + 0.1f);
+        yield return new WaitForSeconds(slowEnemy.slowEffectTime + 0.1f);
         if (slowEnemy._target.name == "Player 1")
         {
             player1SnowUI.enabled = false;

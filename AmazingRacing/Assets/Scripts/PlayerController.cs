@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;
     public bool CanInteractionEnd = true;
+    public bool IsInTunnel = false;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (IsInTunnel) { return; }
         ApplyEngineForce();
         KillOrthogonalVelocity();
         ApplySteering();
