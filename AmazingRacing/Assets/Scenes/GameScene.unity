@@ -5653,7 +5653,7 @@ MonoBehaviour:
   m_Follow: {fileID: 474338891}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 17.805069
+    OrthographicSize: 18
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -6466,7 +6466,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 17.805069
+  orthographic size: 18
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6775,6 +6775,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   CanInteractionEnd: 0
   IsInTunnel: 0
+  virtualCamera: {fileID: 290670136}
+  speedCamSize: 20
+  slowCamSize: 18
 --- !u!114 &474338890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11967,7 +11970,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 17.805069
+  orthographic size: 18
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -12247,12 +12250,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driftFactor: 0.95
-  accelerationFactor: 85
-  turnFactor: 4
+  accelerationFactor: 50
+  turnFactor: 5
   maxSpeed: 30
   animator: {fileID: 0}
   CanInteractionEnd: 0
   IsInTunnel: 0
+  virtualCamera: {fileID: 1253382380}
+  speedCamSize: 20
+  slowCamSize: 18
 --- !u!114 &575167654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13396,7 +13402,7 @@ Transform:
   m_GameObject: {fileID: 989216611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.62, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19017,7 +19023,7 @@ MonoBehaviour:
   m_Follow: {fileID: 575167650}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 17.805069
+    OrthographicSize: 18
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
