@@ -136,6 +136,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if ((-0.1f < velocityVsUp && velocityVsUp <= 0) || (0 <= velocityVsUp && velocityVsUp < 0.1f))
+            {
+                velocityVsUp = 0;
+            }
+
             if (accelerationFactorUpper > 0)
             {
                 virtualCamera.m_Lens.OrthographicSize -= 0.25f * Time.deltaTime;
@@ -144,6 +149,7 @@ public class PlayerController : MonoBehaviour
             else if (virtualCamera.m_Lens.OrthographicSize > slowCamSize)
             {
                 accelerationFactorUpper = 0;
+                velocityVsUp = 0;
                 virtualCamera.m_Lens.OrthographicSize -= 1f * Time.deltaTime;
             }
         }
