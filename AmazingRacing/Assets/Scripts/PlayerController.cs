@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     float rotationAngle = 0;
 
     float velocityVsUp = 0;
+    float accelerationFactorUpper = 0;
 
     Rigidbody2D carRigidbody2D;
 
@@ -24,6 +26,10 @@ public class PlayerController : MonoBehaviour
     public bool CanInteractionEnd = true;
     public bool IsInTunnel = false;
 
+
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
+    [SerializeField] float speedCamSize = 20f;
+    [SerializeField] float slowCamSize = 18f;
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (IsInTunnel) { return; }
+        SetCamAndSpeed();
         ApplyEngineForce();
         KillOrthogonalVelocity();
         ApplySteering();
@@ -57,14 +64,89 @@ public class PlayerController : MonoBehaviour
 
         //Apply drag if there is no accelerationInput so the car stops when the player lets go to accelator
         if (accelerationInput == 0)
-            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 10.0f, Time.fixedDeltaTime * 1.5f);
+            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 2.0f, Time.fixedDeltaTime * 1.5f);
         else
-            carRigidbody2D.drag = 5;
+            carRigidbody2D.drag = 1;
         //Create a force for the engine
-        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
+        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactorUpper;
 
         //Apply force and pushes the car foward
         carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+    }
+    void SetCamAndSpeed()
+    {
+        if (accelerationInput > 0)
+        {
+            if(velocityVsUp >= 0)
+            {
+                if (accelerationFactorUpper < accelerationFactor)
+                {
+                    virtualCamera.m_Lens.OrthographicSize += 0.25f * Time.deltaTime;
+                    accelerationFactorUpper += 25 * Time.deltaTime;
+                }
+                else if (virtualCamera.m_Lens.OrthographicSize < speedCamSize)
+                {
+                    accelerationFactorUpper = accelerationFactor;
+                    virtualCamera.m_Lens.OrthographicSize += 1f * Time.deltaTime;
+                }
+            }
+            else
+            {
+                if (accelerationFactorUpper > 0)
+                {
+                    virtualCamera.m_Lens.OrthographicSize += 0.25f * Time.deltaTime;
+                    accelerationFactorUpper -= 25 * Time.deltaTime;
+                }
+                else if (virtualCamera.m_Lens.OrthographicSize < speedCamSize)
+                {
+                    accelerationFactorUpper = accelerationFactor;
+                }
+            }
+        }
+        else if(accelerationInput < 0)
+        {
+            if(velocityVsUp <= 0)
+            {
+                if (accelerationFactorUpper < accelerationFactor)
+                {
+                    virtualCamera.m_Lens.OrthographicSize -= 0.25f * Time.deltaTime;
+                    accelerationFactorUpper += 25 * Time.deltaTime;
+                }
+                else
+                {
+                    accelerationFactorUpper = accelerationFactor;
+                }
+                if (virtualCamera.m_Lens.OrthographicSize > slowCamSize)
+                {
+                    virtualCamera.m_Lens.OrthographicSize -= 1f * Time.deltaTime;
+                }
+            }
+            else
+            {
+                if (accelerationFactorUpper < 0)
+                {
+                    virtualCamera.m_Lens.OrthographicSize -= 0.25f * Time.deltaTime;
+                    accelerationFactorUpper -= 25 * Time.deltaTime;
+                }
+                else
+                {
+                    accelerationFactorUpper = accelerationFactor;
+                }
+            }
+        }
+        else
+        {
+            if (accelerationFactorUpper > 0)
+            {
+                virtualCamera.m_Lens.OrthographicSize -= 0.25f * Time.deltaTime;
+                accelerationFactorUpper -= 5;
+            }
+            else if (virtualCamera.m_Lens.OrthographicSize > slowCamSize)
+            {
+                accelerationFactorUpper = 0;
+                virtualCamera.m_Lens.OrthographicSize -= 1f * Time.deltaTime;
+            }
+        }
     }
     void ApplySteering()
     {
