@@ -13,7 +13,8 @@ public class CarInputHandler : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
+        if(playerController.IsInTunnel==true){return;}
         Vector2 inputVector = Vector2.zero;
         if (playerNumber == PlayerNumber.Player1)
         {
