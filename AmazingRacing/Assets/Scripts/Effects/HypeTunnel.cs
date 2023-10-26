@@ -22,12 +22,14 @@ public class HypeTunnel : MonoBehaviour
             {
                 Player1.transform.position = Vector3.MoveTowards(Player1.transform.position, _exit.position, tunnelSpeed * Time.deltaTime);
                 Player1.GetComponent<PlayerController>().IsInTunnel = true;
+                Player1.GetComponentInChildren<BoxCollider2D>().enabled = false;
             }
         }
         else
         {
             canPlayer1Go = false;
             Player1.GetComponent<PlayerController>().IsInTunnel = false;
+            Player1.GetComponentInChildren<BoxCollider2D>().enabled = true;
         }
 
 
@@ -37,12 +39,14 @@ public class HypeTunnel : MonoBehaviour
             {
                 Player2.transform.position = Vector3.MoveTowards(Player2.transform.position, _exit.position, tunnelSpeed * Time.deltaTime);
                 Player2.GetComponent<PlayerController>().IsInTunnel = true;
+                Player2.GetComponentInChildren<BoxCollider2D>().enabled = false;
             }
         }
         else
         {
             canPlayer2Go = false;
             Player2.GetComponent<PlayerController>().IsInTunnel = false;
+            Player2.GetComponentInChildren<BoxCollider2D>().enabled = true;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

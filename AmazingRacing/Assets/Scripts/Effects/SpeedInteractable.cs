@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpeedInteractable : Interactable
 {
-    [SerializeField] float speedChange;
+    float speedChange = 40;
     [SerializeField] float interactableTime;
 
     bool isInteracted = false;

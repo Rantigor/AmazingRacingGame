@@ -24,7 +24,7 @@ public class InteractedWithInteractable : MonoBehaviour
         {
             if (gameObject.GetComponent<PlayerController>().CanInteractionEnd)
             {
-                Invoke("DestroyObject", playerController.GetComponent<Interactable>().GetInteractableTime() + .1f);
+                Invoke("DestroyObject", playerController.GetComponent<Interactable>().GetInteractableTime() + .2f);
             }
             else
             {

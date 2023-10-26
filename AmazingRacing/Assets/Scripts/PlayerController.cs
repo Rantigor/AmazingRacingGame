@@ -75,6 +75,12 @@ public class PlayerController : MonoBehaviour
     }
     void SetCamAndSpeed()
     {
+        if(accelerationFactorUpper < 0)
+        {
+            accelerationFactorUpper = 0;
+            return;
+        }
+
         if (accelerationInput > 0)
         {
             if(velocityVsUp >= 0)
