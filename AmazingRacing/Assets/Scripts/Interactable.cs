@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.GameCenter;
 
 public abstract class Interactable : MonoBehaviour
 {

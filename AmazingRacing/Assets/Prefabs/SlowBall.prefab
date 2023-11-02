@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a961036031361e9429863c6c6bae290e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
+  moveSpeed: 0.5
   changeTransparan: 1
-  slowAmount: 60
+  slowAmount: 40
   slowEnemy: {fileID: 0}
   player1SnowUI: {fileID: 0}
   player2SnowUI: {fileID: 0}

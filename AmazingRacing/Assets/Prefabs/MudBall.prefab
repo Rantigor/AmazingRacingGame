@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e504d65a1f5190b42b4ebff6c8ce8475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
+  moveSpeed: 0.5
   changeTransparan: 1
   mudInteracted: {fileID: 0}
   player1MudUI: {fileID: 0}
